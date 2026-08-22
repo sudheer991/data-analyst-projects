@@ -1,5 +1,4 @@
- 
-**IMDb Movies & Directors Database Analysis (SQL)**
+# IMDb Movies & Directors Database Analysis (SQL)
 
 Relational database analysis of a movies/directors dataset in MySQL — answering 13 business questions using joins, aggregation, and filtering across two linked tables.
 
