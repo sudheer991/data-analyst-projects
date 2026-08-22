@@ -1,0 +1,60 @@
+ 
+**IMDb Movies & Directors Database Analysis (SQL)**
+
+Relational database analysis of a movies/directors dataset in MySQL — answering 13 business questions using joins, aggregation, and filtering across two linked tables.
+
+**Tech Stack**
+
+MySQL
+
+**Database Schema**
+
+Two tables, joined on director ID:
+
+**directors table**
+
+Column	                    Description
+id	                     Unique director ID
+name	                    Director's name
+gender	               0/2 = Male, 1 = Female
+department	        Department the director works in
+
+**movies table**
+
+Column	                            Description
+id	                              Unique movie ID
+original_title / title	            Movie name
+budget / revenue	                  Financials
+popularity	                     Popularity score
+release_date	                     Release date
+vote_average / vote_count	       IMDB rating data
+overview / tagline	          Movie description text
+director_id	            Foreign key linking to directors.id
+
+Note: credentials for the source database are intentionally excluded from this README.
+
+**Business Questions Answered**
+Retrieve all movie records
+Retrieve all director records
+Count total movies in the database
+Look up three named directors (James Cameron, Luc Besson, John Woo)
+Find all directors whose name starts with "S"
+Count female directors
+Find the name of the 10th woman director (alphabetically)
+Identify the 3 most popular movies
+Identify the 3 most "bankable" movies (highest revenue-to-budget ratio)
+Find the highest-rated movie released after Jan 1, 2000
+Find the movie(s) directed by Brenda Chapman
+Find the director with the most movies to their name
+Find the most bankable director overall (aggregate revenue-to-budget ratio)
+
+**SQL Skills Demonstrated**
+JOIN (LEFT JOIN) across two related tables
+Aggregate functions (COUNT, SUM) combined with GROUP BY
+Calculated ratios across joined data (revenue ÷ budget)
+Pattern matching (LIKE), set membership (IN), and date filtering
+Ranking and top-N queries with ORDER BY / LIMIT / OFFSET
+
+**Files**
+Sql_queries.sql — all 13 queries, labeled a–m to match the question list above
+
