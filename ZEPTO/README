@@ -1,0 +1,51 @@
+# Zepto E-Commerce Sales & Inventory Analysis (SQL)
+
+Data cleaning and business analysis of a Zepto (quick-commerce) product catalog using MySQL — from raw, inconsistent data to category-level revenue and inventory insights.
+
+## Tech Stack
+MySQL
+
+## Dataset
+A single `zepto` table of product listings with the following columns:
+
+Column                                  Description 
+`Category`                            Product category 
+`name`                                 Product name 
+`mrp`                               Maximum retail price 
+`discountPercent`                     Discount applied 
+`discountedSellingPrice`      Final selling price after discount 
+`availableQuantity`               Units currently in stock 
+`outOfStock`                    Stock status (true/false) 
+`weightInGms`                        Product weight 
+`quantity`                        Order quantity field 
+
+## Data Cleaning
+- Checked every column for null values
+- Identified and removed records with `mrp = 0` (invalid/placeholder rows)
+- Converted `mrp` and `discountedSellingPrice` from paise to rupees (`/ 100`)
+- Flagged duplicate product names appearing more than once in the catalog
+
+## Business Questions Answered
+1. Top 10 best-value products by discount percentage
+2. Products with a high MRP (> ₹300) that are out of stock
+3. Estimated revenue per category (`discountedSellingPrice × availableQuantity`)
+4. Products priced above ₹500 with less than 10% discount
+5. Top 5 categories by average discount percentage
+6. Price-per-gram value for products over 100g, ranked best value to worst
+7. Products segmented into Low / Medium / Bulk weight tiers
+8. Total inventory weight per category
+
+## SQL Skills Demonstrated
+- Data cleaning with `DELETE` / `UPDATE` on real-world messy data
+- Aggregate functions (`SUM`, `AVG`, `COUNT`) with `GROUP BY`
+- Conditional logic with `CASE WHEN`
+- Filtering, sorting, and `LIMIT`-based ranking
+- Derived/calculated columns (e.g. price per gram)
+
+## Files
+- `Zepto_analysis_sql.sql` — full cleaning + analysis script, runnable top to bottom in a MySQL client
+
+## How to Run
+1. Load the Zepto product dataset into a MySQL database as a table named `zepto`
+2. Run `Zepto_analysis_sql.sql` sequentially in MySQL Workbench or the MySQL CLI
+
