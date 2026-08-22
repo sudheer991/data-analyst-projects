@@ -1,0 +1,58 @@
+**Startup Profit Prediction & Power BI Dashboard**
+
+An end-to-end analysis pipeline: exploring what drives startup profitability, building a regression model to predict it, and surfacing the results in an interactive Power BI dashboard.
+
+# Tech Stack
+Python (Pandas, NumPy, Matplotlib, Seaborn, scikit-learn) · Power BI
+
+## Dataset
+50 startup records with the following columns:
+
+ Column                      Description 
+`RD_Spend`                  R&D spending 
+`Administration`        Administrative spending 
+`Marketing_Spend`         Marketing spending 
+`State`            New York, California, or Florida 
+`Profit`                    Target variable 
+
+No missing values or duplicates were present in the data.
+
+## Exploratory Data Analysis
+- Reviewed distribution and summary statistics for all spend/profit columns
+- Built a correlation matrix and heatmap across features
+- Visualized each spend category against `Profit` with scatter plots
+
+**Key finding:** R&D spend is by far the strongest driver of profit (**r = 0.97**), followed by marketing spend (**r = 0.75**). Administration spend showed almost no relationship with profit (**r = 0.20**).
+
+## Model
+A multiple linear regression model was trained using `RD_Spend`, `Administration`, and `Marketing_Spend` as features (`State` was explored during EDA but not one-hot encoded into the model — a natural next step).
+
+- Train/test split: 80/20 (`random_state=42`)
+- Algorithm: `sklearn.linear_model.LinearRegression`
+
+**Test set performance:**
+ Metric      Value
+ R²          0.90 
+ MAE         6,979 
+ RMSE        8,996 
+
+The model was then used to predict profit for new, unseen startup spend combinations.
+
+## Power BI Dashboard
+An interactive dashboard built on the same dataset, including:
+- KPI cards for Total, Minimum, and Maximum profit, plus the model's R² score
+- Average profit by state (column chart)
+- Scatter charts of profit against R&D spend, marketing spend, and administration spend
+- A state-level slicer for filtering all visuals
+
+> `.pbix` files can't be previewed on GitHub — add a screenshot or short screen-recording of the dashboard to this repo so it's visible without opening Power BI.
+
+## Files
+- Regression notebook (EDA, model training, evaluation)
+- `profit_analysis.pbix` — Power BI dashboard file
+
+## How to Run
+1. `pip install pandas numpy matplotlib seaborn scikit-learn`
+2. Run the notebook cells top to bottom against `profit_analysis.csv`
+3. Open `profit_analysis.pbix` in Power BI Desktop to explore the dashboard
+
